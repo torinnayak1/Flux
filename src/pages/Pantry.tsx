@@ -246,8 +246,8 @@ function ItemDetailModal({
   const Icon = categoryIcons[item.category]
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-sm">
-      <div className="w-full max-w-md bg-flux-card rounded-t-3xl border border-flux-border p-5 pb-8 animate-[slideUp_0.3s_ease]">
+    <div className="modal-overlay">
+      <div className="modal-sheet">
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
             <div
@@ -363,8 +363,8 @@ function IssueReportModal({
   ]
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-end justify-center bg-black/60 backdrop-blur-sm">
-      <div className="w-full max-w-md bg-flux-card rounded-t-3xl border border-flux-border p-5 pb-8">
+    <div className="modal-overlay">
+      <div className="modal-sheet">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-semibold">Report Issue — {item.name}</h2>
           <button onClick={onClose}><X size={20} className="text-flux-muted" /></button>
@@ -433,8 +433,8 @@ function AddItemModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-sm">
-      <div className="w-full max-w-md bg-flux-card rounded-t-3xl border border-flux-border p-5 pb-8 max-h-[85vh] overflow-y-auto">
+    <div className="modal-overlay">
+      <div className="modal-sheet">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-semibold">Add Supplement</h2>
           <button onClick={onClose}><X size={20} className="text-flux-muted" /></button>

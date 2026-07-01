@@ -45,6 +45,15 @@
   .tab-active {
     @apply text-flux-accent;
   }
+
+  .modal-overlay {
+    @apply fixed inset-0 z-[100] flex items-end justify-center bg-black/60 backdrop-blur-sm;
+  }
+
+  .modal-sheet {
+    @apply w-full max-w-md bg-flux-card rounded-t-3xl border border-flux-border p-5 max-h-[85dvh] overflow-y-auto;
+    padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px));
+  }
 }
 
 /* Medicine cabinet */
