@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-flux-bg text-flux-text font-sans antialiased;
+    overscroll-behavior: none;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .mobile-shell {
+    @apply mx-auto min-h-screen max-w-md bg-flux-bg relative;
+  }
+
+  .flux-card {
+    @apply bg-flux-card border border-flux-border rounded-2xl p-4;
+  }
+
+  .flux-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-medium transition-all active:scale-[0.98];
+  }
+
+  .flux-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-medium transition-all active:scale-[0.98] bg-flux-accent text-flux-bg hover:bg-flux-accent-dim;
+  }
+
+  .flux-btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-medium transition-all active:scale-[0.98] bg-flux-surface border border-flux-border text-flux-text hover:border-flux-accent/40;
+  }
+
+  .flux-input {
+    @apply w-full rounded-xl bg-flux-surface border border-flux-border px-4 py-3 text-flux-text placeholder:text-flux-muted focus:outline-none focus:border-flux-accent/60;
+  }
+
+  .tab-active {
+    @apply text-flux-accent;
+  }
+}
+
+/* Medicine cabinet */
+.medicine-cabinet {
+  background: linear-gradient(180deg, #2a3548 0%, #1a2230 8%, #151c28 100%);
+  border: 3px solid #3d4f6a;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 40px rgba(0, 0, 0, 0.5),
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+.medicine-cabinet::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.cabinet-mirror {
+  background: linear-gradient(
+    135deg,
+    rgba(180, 200, 220, 0.06) 0%,
+    rgba(100, 140, 180, 0.02) 40%,
+    rgba(180, 200, 220, 0.04) 100%
+  );
+  backdrop-filter: blur(1px);
+}
+
+.cabinet-shelf {
+  background: linear-gradient(180deg, #3a4a60 0%, #2a3548 15%, #1e2838 100%);
+  border-top: 2px solid #4a5d78;
+  border-bottom: 3px solid #151c28;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.cabinet-shelf::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 4px;
+  right: 4px;
+  height: 4px;
+  background: #0f1419;
+  border-radius: 0 0 2px 2px;
+}
+
+.cabinet-handle {
+  width: 48px;
+  height: 8px;
+  background: linear-gradient(180deg, #6b7a90 0%, #4a5d78 100%);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Bottle shapes */
+.bottle-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.bottle-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0 0 4px 4px;
+  transition: height 0.3s ease;
+  z-index: 1;
+}
+
+.bottle-sports {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+}
+
+.bottle-sports-neck {
+  width: 14px;
+  height: 10px;
+  background: linear-gradient(90deg, #888, #bbb, #888);
+  border-radius: 2px 2px 0 0;
+}
+
+.bottle-sports-body {
+  width: 36px;
+  height: 72px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 30%, rgba(0,0,0,0.1) 100%);
+  border: 2px solid color-mix(in srgb, var(--bottle-color) 60%, #333);
+  border-radius: 4px 4px 8px 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bottle-tube {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
+}
+
+.bottle-tube-cap {
+  width: 20px;
+  height: 8px;
+  background: var(--bottle-color);
+  border-radius: 3px 3px 0 0;
+  opacity: 0.9;
+}
+
+.bottle-tube-body {
+  width: 28px;
+  height: 76px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.15) 100%);
+  border: 2px solid color-mix(in srgb, var(--bottle-color) 70%, #444);
+  border-radius: 2px 2px 12px 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bottle-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
+}
+
+.bottle-pill-cap {
+  width: 30px;
+  height: 10px;
+  background: linear-gradient(180deg, #fff 0%, #ddd 100%);
+  border-radius: 3px 3px 0 0;
+  border: 1px solid #bbb;
+}
+
+.bottle-pill-body {
+  width: 34px;
+  height: 70px;
+  background: linear-gradient(90deg, rgba(210, 160, 60, 0.5) 0%, rgba(180, 120, 40, 0.3) 50%, rgba(140, 90, 20, 0.4) 100%);
+  border: 2px solid rgba(180, 130, 50, 0.6);
+  border-radius: 2px 2px 6px 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bottle-pill-body .pill-fill {
+  background: linear-gradient(180deg, rgba(0, 212, 170, 0.4), rgba(0, 168, 136, 0.6));
+}
+
+.bottle-tub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+}
+
+.bottle-tub-lid {
+  width: 44px;
+  height: 8px;
+  background: linear-gradient(180deg, #555, #333);
+  border-radius: 4px 4px 0 0;
+}
+
+.bottle-tub-body {
+  width: 44px;
+  height: 64px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.1) 100%);
+  border: 2px solid color-mix(in srgb, var(--bottle-color) 50%, #444);
+  border-radius: 0 0 6px 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bottle-packet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
+}
+
+.bottle-packet-top {
+  width: 32px;
+  height: 6px;
+  background: var(--bottle-color);
+  border-radius: 2px 2px 0 0;
+  opacity: 0.8;
+}
+
+.bottle-packet-body {
+  width: 32px;
+  height: 78px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bottle-color) 30%, #2a3548), #1a2230);
+  border: 2px solid color-mix(in srgb, var(--bottle-color) 60%, #444);
+  border-radius: 0 0 4px 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottle-can {
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
+}
+
+.bottle-can-body {
+  width: 32px;
+  height: 80px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.1) 100%);
+  border: 2px solid color-mix(in srgb, var(--bottle-color) 60%, #444);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.shelf-category-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(154, 168, 188, 0.7);
+  padding: 0 4px 6px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a3548;
+  border-radius: 4px;
+}
